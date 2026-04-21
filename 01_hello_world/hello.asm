@@ -13,5 +13,5 @@ main:
 	int 80h 		; call kernel
 
 section .data
-	mymsg db 'Hello World!', 0xa
+	mymsg db 'jetzt Hello World!', 0xa
 	mylen equ $-mymsg
