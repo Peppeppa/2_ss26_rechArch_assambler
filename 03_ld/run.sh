@@ -23,7 +23,8 @@ fi
 
 # Neu kompilieren
 nasm -f elf -g "$SRC" -o "$OBJ"
-gcc -m32 -no-pie -z noexecstack "$OBJ" -o "$BIN"
+#gcc -m32 -no-pie -z noexecstack "$OBJ" -o "$BIN"
+ld -m elf_i386 -z noexecstack -o "$BIN" "$OBJ"
 
 # Programm ausführen
 ./"$BIN"
