@@ -1,17 +1,15 @@
-section .text
 global _start
-
+section .data 
+  addr db "yellow"
+section .text 
 _start:
-    mov eax, 4          ; sys_write
-    mov ebx, 1          ; stdout
-    mov ecx, mymsg      ; Adresse der Nachricht
-    mov edx, mylen      ; Länge
-    int 80h             ; Kernel aufrufen
-
-    mov eax, 1          ; sys_exit
-    mov ebx, 0          ; Exit-Code 0
-    int 80h             ; Kernel aufrufen
-
-section .data
-    mymsg db 'jetzt Hello World!', 0xa
-    mylen equ $ - mymsg
+  mov [addr], byte 'H'
+  mov [addr+5], byte '!'
+  mov eax, 4
+  mov ebx, 1
+  mov ecx, addr
+  mov edx, 6 
+  int 0x80
+  mov eax, 1
+  mov ebx, 0 
+  int 0x80
